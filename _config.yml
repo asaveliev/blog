@@ -6,6 +6,7 @@ gems:
 url: https://asaveliev.github.io/blog/
 permalink: /:year/:month/:title/
 google_analytics: UA-3993903-1
+disqus: asaveliev
 exclude:
     - Gemfile
     - Gemfile.lock
