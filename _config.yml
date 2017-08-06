@@ -1,1 +1,11 @@
+name: Artem Saveliev
 theme: jekyll-theme-minimal
+repository: asaveliev/blog
+gems:
+  - jekyll-feed
+url: http://artem.savelev.com
+google_analytics: UA-3993903-1
+exclude:
+    - Gemfile
+    - Gemfile.lock
+    - README.md
