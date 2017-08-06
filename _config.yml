@@ -3,7 +3,7 @@ theme: jekyll-theme-minimal
 repository: asaveliev/blog
 gems:
   - jekyll-feed
-url: http://artem.savelev.com
+url: https://asaveliev.github.io/blog/
 google_analytics: UA-3993903-1
 exclude:
     - Gemfile
