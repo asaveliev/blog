@@ -1,0 +1,58 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+header {
+  float: unset;
+  position: absolute;
+  width: calc(100% - 100px);
+  background-color: #ff4f38;
+  padding-left: 100px;
+  padding-top: 5px;
+}
+
+header .name {
+  margin-top: 15px;
+}
+
+header h1 {
+    float: left;
+    margin-bottom: 0px;
+    padding-top: 10px;
+}
+
+header a {
+  color: white;
+  float: unset;
+  margin-right: 10px;
+}
+
+header .so {
+  float: right;
+}
+
+section {
+  float: unset;
+  width: unset;
+}
+
+footer {
+  float: unset;
+  width: unset;
+  position: unset;
+}
+
+
+.post {
+  margin-bottom: 50px;
+}
+
+body {
+  padding: unset;
+  margin: unset;
+}
+
+.wrapper {
+  padding-top: 100px;
+}

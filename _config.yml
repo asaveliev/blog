@@ -4,8 +4,10 @@ repository: asaveliev/blog
 gems:
   - jekyll-feed
 url: https://asaveliev.github.io/blog/
+permalink: /:year/:month/:title/
 google_analytics: UA-3993903-1
 exclude:
     - Gemfile
     - Gemfile.lock
     - README.md
+title: Artem Saveliev blog
