@@ -16,7 +16,9 @@ running from RPi & connected HDMI monitor
 I am using my always-on windows machine - I have set up separate user just for this purpose and shared the folder.
 As optimization step, I also made a list of all jpeg files in the folder - as enumerating them over the network takes time.
 This command dumps and shuffles the list (I am running this in the WSL console):
-> find . -name "*.jpg" | shuf --output images.txt
+```
+find . -name "*.jpg" | shuf --output images.txt
+```
 
 ## RPi setup
 
@@ -36,11 +38,15 @@ which conviniently auto-logs you in.
 ### Mounting network share
 There are couple of steps here - first test that you can mount your network share you set up:
 
-set up folder where you will be mounting, for example:
-> mkdir /mnt/photos 
+Set up folder where you will be mounting, for example:
+```
+mkdir /mnt/photos 
+```
 
-test that you can mount
-> sudo mount -t cifs -o username=share,noserverino //192.168.11.102/Photos /mnt/photos
+Test that you can mount:
+```
+sudo mount -t cifs -o username=share,noserverino //192.168.11.102/Photos /mnt/photos
+```
 
 What are the options here:
 * cifs - this is windows file sharing, or samba, protocol. Note that if you want to use NFS, you put NFS here.
@@ -55,18 +61,22 @@ When you run the command above it will ask you for password - type it in, and yo
 
 ### Automatically mounting
 We want the RPi to restart unattended, so let's set this up:
-> sudo vi /etc/fstab
+```
+sudo vi /etc/fstab
+```
 
 This file contains the partitions to mount at startup, so let's add ours here. 
 The options from mount command also go into this file:
-> //192.168.11.102/Photos /mnt/photos     cifs    username=share,noserverino,credentials=/home/pi/.smpasswd       0       0
+
+```//192.168.11.102/Photos /mnt/photos     cifs    username=share,noserverino,credentials=/home/pi/.smpasswd       0       0```
 
 (that's tabs between the parameters)
 
 You'll have to make the file /home/pi/.smpasswd, that's what i have there:
-> username=share
-
-> password=somepassword
+```
+username=share
+password=somepassword
+```
 
 If you are worred about someone logging into your photo frame and stealing this password you can store it elsewhere and 
 only give root access - I just made special user in windows that can only see photos, so no worry.
@@ -76,18 +86,23 @@ Remember to enable this "wait for network to boot" option i mentioned before!
 
 ## Show the pictures!
 As I mentioned before, I tried different tools - fbi, fim, eos and feh. The one that can accept list of files and has auto rotation seems to be feh (that's TBD, but this works fine). Here's the command I am using:
->cd /mnt/photos
-
->cat images.txt | feh --auto-rotate -Y -x -q -D 5 -B black -F -Z -z -r -f - 
+```
+cd /mnt/photos
+cat images.txt | feh --auto-rotate -Y -x -q -D 5 -B black -F -Z -z -r -f - 
+```
 
 Remember that I made image list on the server before. You can skip this, but I can't -  have 70k images with many subfolders. If you skip this, you can use --recursive option in feh instead.
 
 ### Automatically starting slideshow on start
 Simply calling the script above is enough when starting RPi (remember that it logs you into X windows automatically). Create this folder structure and file and mention the script with feh command there:
-> vi ~/.config/lxsession/LXDE-pi/autostart
+```
+vi ~/.config/lxsession/LXDE-pi/autostart
+```
 
 this is all I have in the autostart file:
-> /home/pi/show.sh
+```
+/home/pi/show.sh
+```
 
 ## Done
 At this point you should be able to restart RPi at any time and have slideshow come up.
