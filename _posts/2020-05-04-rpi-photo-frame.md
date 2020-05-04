@@ -96,6 +96,7 @@ Remember that I made image list on the server before. You can skip this, but I c
 ### Automatically starting slideshow on start
 Simply calling the script above is enough when starting RPi (remember that it logs you into X windows automatically). Create this folder structure and file and mention the script with feh command there:
 ```
+mkdir -p ~/.config/lxsession/LXDE-pi
 vi ~/.config/lxsession/LXDE-pi/autostart
 ```
 
