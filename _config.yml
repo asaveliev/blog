@@ -3,7 +3,7 @@ theme: jekyll-theme-minimal
 repository: asaveliev/blog
 gems:
   - jekyll-feed
-url: https://asaveliev.github.io/blog/
+url: https://artem.savelev.com/
 permalink: /:year/:month/:title/
 google_analytics: UA-3993903-1
 disqus: asaveliev
@@ -12,3 +12,5 @@ exclude:
     - Gemfile.lock
     - README.md
 title: Artem Saveliev blog
+plugins:
+  - jekyll-sitemap
